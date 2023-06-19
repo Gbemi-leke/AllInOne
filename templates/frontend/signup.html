@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="{% static 'frontend/assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'frontend/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'frontend/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'frontend/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'frontend/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'frontend/assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'frontend/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'frontend/assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'frontend/assets/css/signup.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+    
+          <h1 class="logo me-auto"><a href="{% url 'index' %}">AllinOne</a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="{% url 'index' %}" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+              <li><a class="#" href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'frontend:about'%}">About</a></li>
+              <li><a href="{% url 'frontend:wears'%}">Wear's/Collection</a></li>
+              <li><a href="{% url 'frontend:cakes'%}">Cakes</a></li>
+              <li><a href="{% url 'frontend:phones'%}">Phones/Laptops</a></li>
+              <li><a href="{% url 'frontend:hostel'%}">Hostels</a></li>
+              <li class="dropdown"><a href="#"><span>Foods</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="#">Arena</a></li>
+                  </li>
+                  <li><a href="#">Krafty</a></li>
+                  <li><a href="#">Item7</a></li>
+                  <li><a href="#">Okele Joint</a></li>
+                  <li><a href="#">Iya Afusat</a></li>
+                  <li><a href="#">Joy Bliss</a></li>
+                  <!-- <li><a href="#">Joy Bliss</a></li> -->
+                </ul>
+              </li>
+              <li><a href="{% url 'frontend:blog'%}">Blogs</a></li>
+              <li><a href="{% url 'frontend:contact'%}">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+    
+          <!-- <a href="{% url 'frontend:signup'%}" class="get-started-btn">Register</a> -->
+    
+        </div>
+      </header><!-- End Header -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="cont">
+            <div class="form sign-in">
+            <!-- <h1 class="logo me-auto"><a href="{% url 'index' %}">AllinOne</a></h1> -->
+            <h2>Welcome</h2>
+            {% if messages %}
+              {% for mes in messages %}
+                <div class="alert {{ mes.tags }}">{{ mes }}</div>
+              {% endfor %}
+            {% endif %}
+            <label>
+                <span>Email</span>
+                <input type="email" />
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" />
+            </label>
+            <p class="forgot-pass">Forgot password?</p>
+            <button type="button" class="submit">Sign In</button>
+            {% csrf_token %}
+         
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                 
+                    <h3>Don't have an account? Please Sign up!<h3>
+                </div>
+                <div class="img__text m--in">
+                
+                    <h3>If you already have an account, just sign in.<h3>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">Sign Up</span>
+                    <span class="m--in">Sign In</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <h2>Create your Account</h2>
+                <label>
+                    <span>Name</span>
+                    <input type="text" />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" />
+                </label>
+                <button type="button" class="submit">Sign Up</button>
+                
+                
+            </div>{% csrf_token %}
+        </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+
+        <div class="footer-top">
+          <div class="container">
+            <div class="row">
+    
+              <div class="col-lg-3 col-md-6 footer-contact">
+                <h3>AllInOne</h3>
+                <p>
+                  Hawawu Ajike Hostel Westend <br>
+                  Malete, Kwara State.<br>
+                  Nigeria <br><br>
+                  <strong>Phone:</strong> +234 7084 448 398<br>
+                  <strong>Email:</strong> allinone@gmail.com<br>
+                </p>
+              </div>
+    
+              <div class="col-lg-2 col-md-6 footer-links">
+                <h4>Useful Links</h4>
+                <ul>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                </ul>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Our Services</h4>
+                <ul>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Foods</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                </ul>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 footer-newsletter">
+                <h4>Join Our Newsletter</h4>
+                <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                <form action="" method="post">
+                  <input type="email" name="email"><input type="submit" value="Subscribe">
+                </form>
+              </div>
+    
+            </div>
+          </div>
+        </div>
+    
+        <div class="container d-md-flex py-4">
+    
+          <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+              &copy; Copyright <strong><span>AllInOne</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+              <!-- All the links in the footer should remain intact. -->
+              <!-- You can delete the links only if you purchased the pro version. -->
+              <!-- Licensing information: https://bootstrapmade.com/license/ -->
+              <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/ -->
+              Designed by <a href="https://gbemileke.pythonanywhere.com/" target="_blank">Oluwagbemileke</a>
+            </div>
+          </div>
+          <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          </div>
+        </div>
+      </footer><!-- End Footer -->
+    
+
+    <script>
+        document.querySelector('.img__btn').addEventListener('click', function() {
+            document.querySelector('.cont').classList.toggle('s--signup');
+        });
+    </script>
+</body>
+</html>
+    
