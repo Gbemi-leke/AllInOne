@@ -30,7 +30,7 @@
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3>AllInOne.</h3>
             <p class="fst-italic">
-              This is a platform that helps all Students an Sellers.This enables All student within Malete to Place Order on both goods,accessories and also Placing Orders on various type of Foods.
+              This is a platform that helps all Students an Sellers.This enables All student within Malete to Place Order on both goods,accessories and also Placing Orders on various type's of Foods.
             </p>
             <ul>
               <li><i class="bi bi-check-circle"></i> On time Delivery.</li>
@@ -222,37 +222,28 @@
               <div class="">
                 <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
                   <div class="swiper-wrapper">
-        
-                    <div class="swiper-slide">
-                      <div class="col-md-12 d-flex align-items-stretch">
-                        <div class="card">
-                          <div class="card-img">
-                            <img src="{% static 'frontend/assets/img/events-1.jpg' %}" alt="...">
+         
+                    {% if blog %}
+                      {% for b in blog %}
+                      <div class="swiper-slide">
+                        <div class="col-md-12 d-flex align-items-stretch">
+                  
+                          <div class="card">
+                            <div class="card-img">
+                              <img src="{{ b.blog_img.url }}" alt="...">
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title"><a href="">{{ b.blog_title }}</a></h5>
+                              <!-- <p class="fst-italic text-center">saturday, february 26th at 7:00 pm</p> -->
+                              <p class="fst-italic text-center">{{ b.blog_date }}</p>
+                              <p class="card-text">{{ b.blog_description }}</p>
+                            </div>
                           </div>
-                          <div class="card-body">
-                            <h5 class="card-title"><a href="">Burnfire</a></h5>
-                            <p class="fst-italic text-center">saturday, february 26th at 7:00 pm</p>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                          </div>
+                          
                         </div>
-                      </div>
-                    </div><!-- End testimonial item -->
-        
-                    <div class="swiper-slide">
-                      <div class="col-md-12 d-flex align-items-stretch">
-                        <div class="card">
-                          <div class="card-img">
-                            <img src="{% static 'frontend/assets/img/events-2.jpg' %}" alt="...">
-                          </div>
-                          <div class="card-body">
-                            <h5 class="card-title"><a href="">KWASU Matriculation</a></h5>
-                            <p class="fst-italic text-center">Friday, february 17th at 9:00 am</p>
-                            <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
-                          </div>
-                        </div>
-              
-                      </div>
-                    </div><!-- End testimonial item -->
+                      </div><!-- End testimonial item -->
+                      {% endfor %}
+                    {% endif %}
         
                   </div>
                   <div class="swiper-pagination"></div>

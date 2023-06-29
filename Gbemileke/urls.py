@@ -24,6 +24,10 @@ from django.conf.urls import url
 urlpatterns = [
     path('', views.index, name='index'),
     path('pages/', include('frontend.urls')),
-    path('pages/', include('backend.urls')),
+    path('user/', include('backend.urls')),
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
