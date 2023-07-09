@@ -1,99 +1,174 @@
 {% extends 'backend/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-
+<!Doctype html>
 {% block title %}
-    AllInOne.com
-{% endblock%}
+AllInOne
+{% endblock %}
 
 {% block content %}
-  <!-- /Navigation-->
-  <div class="content-wrapper">
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
-        </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
-      </ol>
-	  <!-- Icon Cards-->
-      <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card dashboard text-white bg-primary o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-envelope-open"></i>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+                <div class="col-lg-8 mb-4 order-0">
+                  <div class="card">
+                    <div class="d-flex align-items-end row">
+                      <div class="col-sm-7">
+                        <div class="card-body">
+                          <h5 class="card-title text-primary">Welcome {{ user.username }}! 🎉</h5>
+                          <p class="mb-4">
+                            This is a platform that helps all Students an Sellers.This enables All student within Malete to Place Order on both goods,accessories and Orders on various type's of Foods.
+                          </p>
+
+                          
+                        </div>
+                      </div>
+                      <div class="col-sm-5 text-center text-sm-left">
+                        <div class="card-body pb-0 px-0 px-md-4">
+                          <img
+                            src="{% static 'backend/assets/img/illustrations/man-with-laptop-light.png' %}"
+                            height="140"
+                            alt="View Badge User"
+                            data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                            data-app-light-img="illustrations/man-with-laptop-light.png"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 order-1">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-6 mb-4">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <span class="fw-semibold d-block mb-1">Blog</span>
+                            <div class="dropdown">
+                              <button
+                                class="btn p-0"
+                                type="button"
+                                id="cardOpt3"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                <a class="dropdown-item" href="#">View Blogs</a>
+                                <a class="dropdown-item" href="#">Upload Blog</a>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <h3 class="card-title mb-2">{{ forloop.counter }} 68</h3>
+                          <!-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> -->
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                <!-- Total Revenue -->
+                <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+                  <div class="card">
+                    <div class="row row-bordered g-0">
+                      <div class="col-md-8">
+                        <h5 class="card-header m-0 me-2 pb-3">Blogs</h5>
+                        <!-- <div id="totalRevenueChart" class="px-2"></div> -->
+                      </div>
+                      <div class="table-responsive text-nowrap">
+                        <table class="table table-dark">
+                          <thead>
+                            <tr>
+                              <th>S/N</th>
+                              <th>Blog Title</th>
+                              <th>Discription</th>
+                              <th>Blog Image</t>
+                              <th>Actions</th>
+                            </tr>
+                          </thead>
+                          {% if list_blog %}
+                            {% for l in list_blog %}
+                          <tbody class="table-border-bottom-0">
+                            <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ l.blog_title }}</strong></td>
+                              <td>{{ l.blog_description|truncatewords:5  }}</td>
+                              
+                              <td>
+                                <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                  <li
+                                    data-bs-toggle="tooltip"
+                                    data-popup="tooltip-custom"
+                                    data-bs-placement="top"
+                                    class="avatar avatar-xs pull-up"
+                                    title="Blog Image"
+                                  >
+                                    <img src="{{ l.img_url }}" alt="Avatar" class="rounded-circle" />
+                                </ul>
+                              </td>
+                              
+                              <td>
+                                <div class="dropdown">
+                                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                  </button>
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"
+                                      ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                                    >
+                                    <a class="dropdown-item" href="#"
+                                      ><i class="bx bx-trash me-1"></i> Delete</a
+                                    >
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                            {% endfor %}
+                          {% endif %}
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--/ Total Revenue -->
+                <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+                  <div class="row">
+                   
+                    
+                    <!-- </div>
+                    <div class="row"> -->
+                    <div class="col-12 mb-4">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                            <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                              <div class="card-title">
+                                <h5 class="text-nowrap mb-2">Sale's</h5>
+                               
+                              </div>
+                              <div class="mt-sm-auto">
+                                
+                                <h3 class="mb-0">686</h3>
+                              </div>
+                            </div>
+                            <!-- <div id="profileReportChart"></div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="mr-5"><h5>26 New Messages!</h5></div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="messages.html">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card dashboard text-white bg-warning o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-star"></i>
-              </div>
-				<div class="mr-5"><h5>11 New Reviews!</h5></div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="reviews.html">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card dashboard text-white bg-success o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-calendar-check-o"></i>
-              </div>
-              <div class="mr-5"><h5>10 New Bookings!</h5></div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="bookings.html">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card dashboard text-white bg-danger o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-heart"></i>
-              </div>
-              <div class="mr-5"><h5>10 New Bookmarks!</h5></div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="bookmarks.html">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-		</div>
-		<!-- /cards -->
-		<h2></h2>
-		<div class="box_general padding_bottom">
-			<div class="header_box version_2">
-				<h2><i class="fa fa-bar-chart"></i>Statistic</h2>
-			</div>
-		 <canvas id="myAreaChart" width="100%" height="30" style="margin:45px 0 15px 0;"></canvas>
-		</div>
-	  </div>
-	  <!-- /.container-fluid-->
-  </div>
-    <!-- /.container-wrapper-->
+            <!-- / Content -->
+
 {% endblock %}

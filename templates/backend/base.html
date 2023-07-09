@@ -1,273 +1,350 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Ansonika">
-  <title>AllInOne dashboard</title>
-	
-  <!-- Favicons-->
-  <link rel="shortcut icon" href="{% static 'frontend/assets/img/allinone2.png' %}" type="image/x-icon">
-  <link rel="apple-touch-icon" type="image/x-icon" href="{% static 'backend/img/apple-touch-icon-57x57-precomposed.png' %}">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{% static 'backend/img/apple-touch-icon-72x72-precomposed.png' %}">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{% static 'backend/img/apple-touch-icon-114x114-precomposed.png' %}">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="i{% static 'backend/mg/apple-touch-icon-144x144-precomposed.png' %}">
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
 
-  <!-- GOOGLE WEB FONT -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
-	
-  <!-- Bootstrap core CSS-->
-  <link href="{% static 'backend/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <!-- Main styles -->
-  <link href="{% static 'backend/css/admin.css' %}" rel="stylesheet">
-  <!-- Icon fonts-->
-  <link href="{% static 'backend/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-  <!-- Plugin styles -->
-  <link href="{% static 'backend/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
-  <!-- Your custom styles -->
-  <link href="{% static 'backend/css/custom.css' %}" rel="stylesheet">
-	
-</head>
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
 
-<body class="fixed-nav sticky-footer" id="page-top">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-    <a class="navbar-brand" href="{% url 'backend:dashboard' %}"><img src="{% static 'frontend/assets/img/allinone2.png' %}" data-retina="true" alt="" width="50" height="36">ALLINONE</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="{% url 'backend:dashboard' %}">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-          <a class="nav-link" href="messages.html">
-            <i class="fa fa-fw fa-envelope-open"></i>
-            <span class="nav-link-text">Messages</span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
-          <a class="nav-link" href="bookings.html">
-            <i class="fa fa-fw fa-calendar-check-o"></i>
-            <span class="nav-link-text">Bookings <span class="badge badge-pill badge-primary">6 New</span></span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings" data-parent="#mylistings">
-            <i class="fa fa-fw fa-list"></i>
-            <span class="nav-link-text">My listings</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMylistings">
-            <li>
-              <a href="listings.html">Pending <span class="badge badge-pill badge-primary">6</span></a>
-            </li>
-			<li>
-              <a href="listings.html">Active <span class="badge badge-pill badge-success">6</span></a>
-            </li>
-			<li>
-              <a href="listings.html">Expired <span class="badge badge-pill badge-danger">6</span></a>
-            </li>
-          </ul>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
-          <a class="nav-link" href="reviews.html">
-            <i class="fa fa-fw fa-star"></i>
-            <span class="nav-link-text">Reviews</span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bookmarks">
-          <a class="nav-link" href="bookmarks.html">
-            <i class="fa fa-fw fa-heart"></i>
-            <span class="nav-link-text">Bookmarks</span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
-          <a class="nav-link" href="add-listing.html">
-            <i class="fa fa-fw fa-plus-circle"></i>
-            <span class="nav-link-text">Add listing</span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-          <a class="nav-link" href="user-profile.html">
-            <i class="fa fa-fw fa-user"></i>
-            <span class="nav-link-text">My Profile</span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#Components">
-            <i class="fa fa-fw fa-gear"></i>
-            <span class="nav-link-text">Components</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="charts.html">Charts</a>
-            </li>
-			<li>
-              <a href="tables.html">Tables</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="navbar-nav sidenav-toggler">
-        <li class="nav-item">
-          <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
-          </a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-envelope"></i>
-            <span class="d-lg-none">Messages
-              <span class="badge badge-pill badge-primary">12 New</span>
-            </span>
-            <span class="indicator text-primary d-none d-lg-block">
-              <i class="fa fa-fw fa-circle"></i>
-            </span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-            <h6 class="dropdown-header">New Messages:</h6>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <strong>David Miller</strong>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="{% static 'backend/assets/' %}"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>
+        {% block title%}
+         Ayo Blog
+        {% endblock%}
+    </title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'frontend/assets/img/allinone2.png' %}" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="{% static 'backend/assets/vendor/fonts/boxicons.css' %}" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{% static 'backend/assets/vendor/css/core.css' %}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{% static 'backend/assets/vendor/css/theme-default.css' %}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{% static 'backend/assets/css/demo.css' %}" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="{% static 'backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'backend/assets/vendor/libs/apex-charts/apex-charts.css' %}" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="{% static 'backend/assets/vendor/js/helpers.js' %}"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="{% static 'backend/assets/js/config.js' %}"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="{% url 'index' %}" class="app-brand-link">
+              <img src="{% static 'frontend/assets/img/allinone2.png' %}" data-retina="true" alt="" width="50" height="36">ALLINONE</a>
             </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <strong>Jane Smith</strong>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
             </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <strong>John Doe</strong>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item small" href="#">View all messages</a>
           </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-bell"></i>
-            <span class="d-lg-none">Alerts
-              <span class="badge badge-pill badge-warning">6 New</span>
-            </span>
-            <span class="indicator text-warning d-none d-lg-block">
-              <i class="fa fa-fw fa-circle"></i>
-            </span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="alertsDropdown">
-            <h6 class="dropdown-header">New Alerts:</h6>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <span class="text-success">
-                <strong>
-                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
-              </span>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <span class="text-danger">
-                <strong>
-                  <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
-              </span>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <span class="text-success">
-                <strong>
-                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
-              </span>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item small" href="#">View all alerts</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0 mr-lg-2">
-            <div class="input-group">
-              <input class="form-control search-top" type="text" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item active">
+              <a href="{% url 'backend:dashboard' %}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Dashboard</div>
+              </a>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Pages</span>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Misc">Blogs</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="#" class="menu-link">
+                    <div data-i18n="Error">Upload</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="menu-link">
+                    <div data-i18n="Error">Update</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="menu-link">
+                    <div data-i18n="Error">View</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chat"></i>
+                <div data-i18n="Contact">Products</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="{% url 'backend:message' %}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chat"></i>
+                <div data-i18n="Contact">Messages</div>
+              </a>
+            </li>
+            <!-- Components -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Account Settings</span></li>
+            <!-- Cards -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">Account Settings</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="{% url 'backend:user_profile' %}" class="menu-link">
+                    <div data-i18n="Account"user_profile>User Profile</div>
+                  </a>
+                </li>
+                <!-- <li class="menu-item">
+                  <a href="#" class="menu-link">
+                    <div data-i18n="Notifications">Notifications</div>
+                  </a>
+                </li> -->
+                <li class="menu-item">
+                  <a href="{% url 'backend:edit_profile' %}" class="menu-link">
+                    <div data-i18n="Edit Account">Edit Account</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                <div data-i18n="Authentications">Authentications</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="#" class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Password Reset</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{% url 'backend:change_password' %}" class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Change Password</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Forms & Tables -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Newsletter &amp; Comments</span></li>
+            <!-- Forms -->
+            <li class="menu-item">
+              <a href="{% url 'backend:newsletter' %}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <div data-i18n="Newsletter">Newsletter</div>
+              </a> 
+            </li>
+            
+            <!-- Tables -->
+            <li class="menu-item">
+              <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chat"></i>
+                <div data-i18n="Comments">Comments</div>
+              </a>
+            </li>
+            <!-- Misc -->
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar"
+          >
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
             </div>
-          </form>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  {% block content %}
 
-  {% endblock%}
-  <footer class="sticky-footer">
-    <div class="container">
-      <div class="text-center">
-        <small>Copyright © PANAGEA 2018</small>
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Place this tag where you want the button to render. -->
+                <li class="nav-item lh-1 me-3">
+                  <a
+                    class="github-button"
+                    href="#"
+                    data-icon="octicon-star"
+                    data-size="large"
+                    data-show-count="true"
+                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
+                    >{{user.username }}</a
+                  >
+                </li>
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <i class="fa fa-profile"></i>
+                      <!-- <img src="{% static 'frontend/img/bg-img/admin.jpg' %}" alt class="w-px-40 h-auto rounded-circle" /> -->
+                      <img class="img-profile rounded-circle" src="{% static 'backend/image/undraw_profile.svg' %}">
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <!-- <img src="{% static 'frontend/img/bg-img/admin.jpg' %}" alt class="w-px-40 h-auto rounded-circle" /> -->
+                              <img class="img-profile rounded-circle" src="{% static 'backend/image/undraw_profile.svg' %}">
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block">{{user.username }}</span>
+                            <small class="text-muted">Admin</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'backend:user_profile' %}">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'backend:change_password' %}">
+                        <i class="bx bx-cog me-2"></i>
+                        <span class="align-middle">Password Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'backend:logout_view' %}">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
+    {% block content %}
+
+    {% endblock %}
+    <!-- Footer -->
+    <footer class="content-footer footer bg-footer-theme">
+    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+      <div class="mb-2 mb-md-0">
+        
+        <div class="copyright">
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+          &copy; Copyright <strong><span>AllInOne❤️</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          Designed by <a href="https://gbemileke.pythonanywhere.com/" target="_blank">Oluwagbemileke</a>
+        </div>
       </div>
     </div>
-  </footer>
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fa fa-angle-up"></i>
-  </a>
-  <!-- Logout Modal-->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{% url 'backend:logout_view'%}">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Bootstrap core JavaScript-->
-  <script src="{% static 'backend/vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'backend/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <!-- Core plugin JavaScript-->
-  <script src="{% static 'backend/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-  <!-- Page level plugin JavaScript-->
-  <script src="{% static 'backend/vendor/chart.js/Chart.js' %}"></script>
-  <script src="{% static 'backend/vendor/datatables/jquery.dataTables.js' %}"></script>
-  <script src="{% static 'backend/vendor/datatables/dataTables.bootstrap4.js' %}"></script>
-  <script src="{% static 'backend/vendor/jquery.selectbox-0.2.js' %}"></script>
-  <script src="{% static 'backend/vendor/retina-replace.min.js' %}"></script>
-  <script src="{% static 'backend/vendor/jquery.magnific-popup.min.js' %}"></script>
-  <!-- Custom scripts for all pages-->
-  <script src="{% static 'backend/js/admin.js' %}"></script>
-  <!-- Custom scripts for this page-->
-  <script src="{% static 'backend/js/admin-charts.js' %}"></script>
-  
+    </footer>
+    <!-- / Footer -->
+
+  <div class="content-backdrop fade"></div>
+</div>
+<!-- Content wrapper -->
+</div>
+<!-- / Layout page -->
+</div>
+
+<!-- Overlay -->
+<div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="{% static 'backend/assets/vendor/libs/jquery/jquery.js' %}"></script>
+<script src="{% static 'backend/assets/vendor/libs/popper/popper.js' %}"></script>
+<script src="{% static 'backend/assets/vendor/js/bootstrap.js' %}"></script>
+<script src="{% static 'backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+
+<script src="{% static 'backend/assets/vendor/js/menu.js' %}"></script>
+<!-- endbuild -->
+
+<!-- Vendors JS -->
+<script src="{% static 'backend/assets/vendor/libs/apex-charts/apexcharts.js' %}"></script>
+
+<!-- Main JS -->
+<script src="{% static 'backend/assets/js/main.js' %}"></script>
+
+<!-- Page JS -->
+<script src="{% static 'backend/assets/js/dashboards-analytics.js' %}"></script>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
