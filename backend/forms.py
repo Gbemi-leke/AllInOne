@@ -72,3 +72,9 @@ class EditUserForm(forms.ModelForm):
             user.save()
             return user
      
+class SubscribeForm(forms.ModelForm):
+    email = forms.EmailField(label='', widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'Email', 'type':'email', 'name':'email'}))
+    class Meta:
+        model = SubscribeModel
+        fields = ['email']
