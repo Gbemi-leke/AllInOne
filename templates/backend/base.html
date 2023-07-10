@@ -108,17 +108,13 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="#" class="menu-link">
+                  <a href="{% url 'backend:add_blog' %}" class="menu-link">
                     <div data-i18n="Error">Upload</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="#" class="menu-link">
-                    <div data-i18n="Error">Update</div>
-                  </a>
                 </li>
                 <li class="menu-item">
-                  <a href="#" class="menu-link">
+                  <a href="{% url 'backend:list_all_blog' %}" class="menu-link">
                     <div data-i18n="Error">View</div>
                   </a>
                 </li>
@@ -170,7 +166,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="#" class="menu-link" target="_blank">
+                  <a href="{% url 'backend:password_reset_request' %}" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Password Reset</div>
                   </a>
                 </li>

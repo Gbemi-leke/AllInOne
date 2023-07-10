@@ -20,7 +20,7 @@ Ayo Blog
               <div class="card mb-4">
                 <div class="card-body">
                   <div class="container-xxl flex-grow-1 container-p-y">
-                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> List Of All Blog</h4>
+                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Blogs /</span> List Of All Blog</h4>
                     <!-- Bootstrap Dark Table -->
                     <div class="card">
                       <h5 class="card-header">All Blogs</h5>
@@ -63,7 +63,10 @@ Ayo Blog
                                   </button>
                                   <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ l.id }}"
-                                      ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                                      ><i class="bx bx-edit-alt me-1"></i> Update</a
+                                    >
+                                    <a class="dropdown-item" href="{% url 'backend:preview' l.id %}"
+                                      ><i class="bx bx-eyes-alt me-1"></i> Preview</a
                                     >
                                     <a class="dropdown-item" href="{% url 'backend:delete_blog' l.id %}"
                                       ><i class="bx bx-trash me-1"></i> Delete</a

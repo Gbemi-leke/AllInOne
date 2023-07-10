@@ -40,6 +40,14 @@ class ChangePasswordForm(PasswordChangeForm):
     new_password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm Password'}))
     botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
 
+class PasswordReset(PasswordResetForm):
+    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter Email',}))
+    
+class SetPassword(SetPasswordForm):
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-lg', 'placeholder':'New Password'}))
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-lg', 'placeholder':'Confirm Password'}))
+
+
 class EditUserForm(forms.ModelForm):
     username = forms.CharField( widget=forms.TextInput(
         attrs={'class':'form-control', 'placeholder': 'Username' }))
@@ -71,10 +79,29 @@ class EditUserForm(forms.ModelForm):
         if commit:
             user.save()
             return user
-     
-class SubscribeForm(forms.ModelForm):
-    email = forms.EmailField(label='', widget=forms.EmailInput(
-        attrs={'class': 'form-control', 'placeholder': 'Email', 'type':'email', 'name':'email'}))
-    class Meta:
-        model = SubscribeModel
-        fields = ['email']
+
+class BlogForm(forms.ModelForm):
+
+    class Meta():
+        model = Blog
+        fields = ['blog_img', 'blog_title','blog_description',]
+        exclude = ['blog_date', 'user']
+
+        widgets = { 
+            'blog_img': forms.FileInput(attrs={'class': 'form-control'}),
+            'blog_title': forms.TextInput(attrs={'class': 'form-control', 'type':'text', 'id':'floatingInput','placeholder': 'News'}),
+            'blog_description': forms.Textarea(attrs={'class': 'form-control', 'id':'exampleFormControlTextarea1','rows':'6'}),     
+        }
+
+class EditBlogForm(forms.ModelForm):
+
+    class Meta():
+        model = Blog
+        fields = ['blog_img', 'blog_title','blog_description',]
+        exclude = ['blog_date', 'user']
+
+        widgets = { 
+            'blog_img': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'blog_title': forms.TextInput(attrs={'class': 'form-control', 'type':'text', 'id':'floatingInput','placeholder': 'News'}),
+            'blog_description': forms.Textarea(attrs={'class': 'form-control', 'id':'exampleFormControlTextarea1','rows':'6'}),
+        }
