@@ -273,10 +273,10 @@
                               <img src="{{ b.blog_img.url }}" alt="...">
                             </div>
                             <div class="card-body">
-                              <h5 class="card-title"><a href="">{{ b.blog_title }}</a></h5>
+                              <h5 class="card-title"><a href="{% url 'frontend:blog_details' b.id %}">{{ b.blog_title }}</a></h5>
                               <!-- <p class="fst-italic text-center">saturday, february 26th at 7:00 pm</p> -->
                               <p class="fst-italic text-center">{{ b.blog_date }}</p>
-                              <p class="card-text">{{ b.blog_description }}</p>
+                              <p class="card-text">{{ b.blog_description|truncatewords:30 }}.....</p>
                             </div>
                           </div>
                           

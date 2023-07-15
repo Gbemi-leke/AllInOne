@@ -139,6 +139,10 @@ def blog(request):
         subscribe_form = SubscribeForm()
     return render(request, 'frontend/blog.html', {'blog':blogs, 'subscribe_form':subscribe_form})
 
+def blog_details(request, detail_id):
+    detail =Blog.objects.get(id=detail_id)
+    return render(request, 'frontend/blog_details.html', {'det':detail})
+
 def hostel(request):
     if request.method == 'POST':
         subscribe_form = SubscribeForm(request.POST)

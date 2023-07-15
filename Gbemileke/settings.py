@@ -55,7 +55,10 @@ INSTALLED_APPS = [
     'frontend',
     'backend',
     'crispy_forms',
+    'paystack',
 ]
+# PAYSTACK_PUBLIC_KEY = xxxxx // paystack public key
+# PAYSTACK_SCRET_KEY = xxxxx //paystack secret key
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
