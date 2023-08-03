@@ -20,7 +20,7 @@ Ayo Blog
                    
                     
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'backend:edit_profile'%}"
+                      <a class="nav-link" href="{% url 'users:edit_profile'%}"
                         ><i class="bx bx-link-alt me-1"></i> Update Profile</a>
                     </li>
                   </ul>
@@ -29,35 +29,25 @@ Ayo Blog
                     <!-- Account -->
                     <hr class="my-0" />
                     <div class="card-body">
-                      <form id="formAccountSettings" method="post" enctype="multipart/form-data">
+                      <form  enctype="multipart/form-data" method="POST">
                         {% if messages %}
                           {% for message in messages %}
                               <div class="alert alert-success">{{ message }}</div>
                           {% endfor %}
                         {% endif %}
                         <div class="row">
-                          <div class="card-body mb-3 col-md-6">
+                          <div class="mb-3 col-md-6">
                             <div class="d-flex align-items-start align-items-sm-center gap-4">
-                              <img
-                                src="{% static 'backend/image/undraw_profile.svg' %}"
+                              <!-- <img
+                                src="{{ user.image_url }}"
                                 alt="user-avatar"
                                 class="d-block rounded"
                                 height="20%"
                                 width="20%"
                                 id="uploadedAvatar"
-                              />
-                              <div class="button-wrapper">
-                                <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                                  <span class="d-none d-sm-block">Upload new photo</span>
-                                  <i class="bx bx-upload d-block d-sm-none"></i>
-                                  <input
-                                    type="file"
-                                    id="upload"
-                                    class="account-file-input"
-                                    hidden
-                                    accept="image/png, image/jpeg"
-                                  />
-                                </label>
+                              /> -->
+                              <div class="">
+                                  {{ edit_key.image }}                   
                               </div>
                             </div>
                           </div>
@@ -73,7 +63,7 @@ Ayo Blog
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="username" class="form-label">Username</label>
-                            {{ edit_key.username }} 
+                            {{ edit_key.user_name }} 
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
@@ -89,10 +79,9 @@ Ayo Blog
 
                             </div>
                           </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="address" class="form-label">Address</label>
-                            {{ edit_key.address }} 
-
+                          <div class="mb-3 col-md-12">
+                            <label for="about" class="form-label">About Me</label>
+                            {{ edit_key.about }} 
                           </div>
                         </div>
                         <div class="mt-2">

@@ -55,10 +55,13 @@ INSTALLED_APPS = [
     'frontend',
     'backend',
     'crispy_forms',
+    'payments',
     'paystack',
+    'users',
 ]
-# PAYSTACK_PUBLIC_KEY = xxxxx // paystack public key
-# PAYSTACK_SCRET_KEY = xxxxx //paystack secret key
+
+PAYSTACK_PUBLIC_KEY = "pk_live_937f53d2495802353f454334e673bd4e352ed923"
+PAYSTACK_SECRET_KEY = "sk_live_a86e1df49f09461a9e656308c163033411a6e02f"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,6 +142,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+AUTH_USER_MODEL = 'users.NewUser'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

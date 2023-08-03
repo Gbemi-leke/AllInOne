@@ -25,7 +25,7 @@ Ayo Blog
                         {% for c in contact %}
                         <div class="row">
                             <div class="col-md-2 col-sm-12">
-                            <figure ><img src="{% static 'backend/image/undraw_profile.svg' %}"
+                            <figure ><img src="{{ user.image_url }}"
                                 alt="user-avatar"
                                 class="d-block rounded"
                                 height="20%"
@@ -36,6 +36,9 @@ Ayo Blog
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12">
                                         <h4>{{ c.first_name }}</h4>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <p>{{ c.subject}}</p>
                                     </div>
                                     <div class="col-md-12 col-sm-12">
                                         <p>{{ c.message |truncatewords:30 }}</p>

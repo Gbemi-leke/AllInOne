@@ -10,9 +10,13 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import UpdateView
 
+# Models
 from django.contrib import messages
 from frontend.models import *
 from backend.forms import *
+from payments.models import *
+from users.models import *
+
 # Password Reset
 from django.conf import settings
 from django.contrib.auth.forms import PasswordResetForm
@@ -27,9 +31,9 @@ from django.utils.http import urlsafe_base64_encode
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        user_name = request.POST.get('user_name')
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)  
+        user = authenticate(request, username=user_name, password=password)  
 
         if user is not None:
             login(request, user)
@@ -71,20 +75,6 @@ def change_password(request):
         change_password = PasswordChangeForm(user=request.user)
     return render(request, 'backend/change_password.html', {'pass_key':change_password})
 
-@login_required(login_url='/backend/login/')
-def user_profile(request):
-    return render(request, 'backend/user_profile.html')
-
-@login_required(login_url='/backend/login/')
-def edit_profile(request):
-    if request.method == 'POST':
-        edit_form = EditUserForm(request.POST, instance=request.user)
-        if edit_form.is_valid():
-            edit_form.save()
-            messages.success(request, 'User edited successfully.')
-    else:
-        edit_form = EditUserForm(instance=request.user)
-    return render(request, 'backend/edit_profile.html', {'edit_key':edit_form})
 
 def password_reset_request(request):
     if request.method == "POST":

@@ -1,6 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from users.models import *
 
 # Create your models here.
 
@@ -9,7 +9,7 @@ class Blog(models.Model):
     blog_title = models.CharField(max_length=100, verbose_name='Blog Title')
     blog_description = models.TextField(verbose_name='Description')
     blog_date = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(NewUser, on_delete=models.CASCADE)
 
     class Meta():
         verbose_name_plural = 'Blog'
@@ -33,7 +33,7 @@ class Contact(models.Model):
     email= models.EmailField()
     first_name = models.CharField(max_length=100)
     message = models.TextField(max_length=200)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(NewUser, on_delete=models.CASCADE)
     
     def __srf__(self):
         return self.first_name
