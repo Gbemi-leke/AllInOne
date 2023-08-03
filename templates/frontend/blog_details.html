@@ -188,7 +188,7 @@
             <img src="{{ det.blog_img.url  }}" class="img-fluid" alt="">
             <h3>{{ det.blog_title }}</h3>
             <p>
-              {{ det.blog_description | linebreaks }}
+              {{ det.blog_description |linebreaks }}
             </p>
             <button type="submit" class=" btn btn-primary me-2 fa fa-fw fa-eye col-md-2 col-sm-5"><a href="{% url 'frontend:blog'%}" style="color:#fff;">Back</a></button>
           </div>
@@ -317,5 +317,4 @@
     <!-- End Cource Details Tabs Section -->
 
   </main><!-- End #main -->
-
  {% endblock %}
