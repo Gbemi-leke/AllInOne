@@ -157,14 +157,6 @@
                     <div data-i18n="Edit Account">Edit Account</div>
                   </a>
                 </li>
-              </ul>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">Authentications</div>
-              </a>
-              <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="{% url 'backend:password_reset_request' %}" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Password Reset</div>
@@ -175,6 +167,15 @@
                     <div data-i18n="Basic">Change Password</div>
                   </a>
                 </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-wallet-alt"></i>
+                <div data-i18n="Authentications">Wallets</div>
+              </a>
+              <ul class="menu-sub">
+                
               </ul>
             </li>
 
@@ -227,7 +228,7 @@
                     data-size="large"
                     data-show-count="true"
                     aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-                    >{{user.username }}</a
+                    >{{user.user_name }}</a
                   >
                 </li>
 
@@ -236,7 +237,6 @@
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
                       <i class="fa fa-profile"></i>
-                      <!-- <img src="{% static 'frontend/img/bg-img/admin.jpg' %}" alt class="w-px-40 h-auto rounded-circle" /> -->
                       <img class="img-profile rounded-circle" src="{{ user.image_url}}">
                     </div>
                   </a>
@@ -250,7 +250,7 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">{{user.username }}</span>
+                            <span class="fw-semibold d-block">{{user.user_name }}</span>
                             <small class="text-muted">Admin</small>
                           </div>
                         </div>
@@ -275,7 +275,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="{% url 'backend:logout_view' %}">
+                      <a class="dropdown-item" href="{% url 'backend:logout_view' %}" id="warning">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -297,6 +297,11 @@
         <div class="copyright">
         <script>
           document.write(new Date().getFullYear());
+          let warningLink=document.getElementById("warning");
+          warningLink.addEventListener('click',alerter, false);
+          function alerter(){
+          alert("Are you sure you want to log out !!!");
+}
         </script>
           &copy; Copyright <strong><span>AllInOne❤️</span></strong>. All Rights Reserved
         </div>

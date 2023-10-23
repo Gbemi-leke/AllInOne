@@ -38,36 +38,36 @@ Ayo Blog
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <div class="d-flex align-items-start align-items-sm-center gap-4">
-                              <!-- <img
+                              <img
                                 src="{{ user.image_url }}"
                                 alt="user-avatar"
                                 class="d-block rounded"
                                 height="20%"
                                 width="20%"
                                 id="uploadedAvatar"
-                              /> -->
+                              />
                               <div class="">
-                                  {{ edit_key.image }}                   
+                                  {{ edit_form.image}}                   
                               </div>
                             </div>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">First Name</label>
-                            {{ edit_key.first_name }} 
+                            {{ edit_form.first_name }} 
 
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Last Name</label>
                             
-                            {{ edit_key.last_name }} 
+                            {{ edit_form.last_name }} 
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="username" class="form-label">Username</label>
-                            {{ edit_key.user_name }} 
+                            {{ edit_form.user_name }} 
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
-                            {{ edit_key.email }} 
+                            {{ edit_form.email }} 
 
                           </div>
                           
@@ -75,13 +75,13 @@ Ayo Blog
                             <label class="form-label" for="phoneNumber">Phone Number</label>
                             <div class="input-group input-group-merge">
                               <span class="input-group-text">NG (+234)</span>
-                              {{ edit_key.phone_number }} 
+                              {{ edit_form.phone_number }} 
 
                             </div>
                           </div>
                           <div class="mb-3 col-md-12">
                             <label for="about" class="form-label">About Me</label>
-                            {{ edit_key.about }} 
+                            {{ edit_form.about }} 
                           </div>
                         </div>
                         <div class="mt-2">

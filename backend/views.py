@@ -16,6 +16,7 @@ from frontend.models import *
 from backend.forms import *
 from payments.models import *
 from users.models import *
+from users.forms import *
 
 # Password Reset
 from django.conf import settings
@@ -30,6 +31,20 @@ from django.utils.http import urlsafe_base64_encode
  #  end
 
 def login_view(request):
+    if request.method  == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()
+            user.profile.user_name = form.cleaned_data.get('user_name')
+            user.profile.first_name = form.cleaned_data.get('first_name')
+            user.profile.email = form.cleaned_data.get('email')
+            # user can't login until link confirmed
+            user.is_active = False
+            user.save()
+            messages.success(request, 'User Registered')
+    else:
+        form = RegisterForm()
     if request.method == 'POST':
         user_name = request.POST.get('user_name')
         password = request.POST.get('password')
@@ -40,7 +55,7 @@ def login_view(request):
             return render(request, 'backend/index.html')
         else:
             messages.error(request, 'Username and Password do not match')    
-    return render(request, 'frontend/signup.html')
+    return render(request, 'frontend/signup.html', {'reg':form})
 
 @login_required(login_url='/backend/login/')
 def logout_view(request):

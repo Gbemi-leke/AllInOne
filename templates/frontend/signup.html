@@ -24,7 +24,7 @@
         <div class="row">
             <!-- SIGN UP -->
             <div class="col align-items-center flex-col sign-up">
-                <form class="form-wrapper align-items-center" >
+                <form class="form-wrapper align-items-center"  method='post'>
                     <div class="form sign-up">
                         {% if messages %}
                             {% for mes in messages %}
@@ -33,20 +33,22 @@
                         {% endif %}
                         <div class="input-group">
                             <i class='bx bxs-user'></i>
-                            <input type="text" placeholder="Username">
+                            {{reg.user_name}}
+                        </div>
+                        <div class="input-group">
+                            <i class='bx bxs-user'></i>
+                            {{reg.first_name}}
                         </div>
                         <div class="input-group">
                             <i class='bx bx-mail-send'></i>
-                            <input type="email" placeholder="Email">
+                            {{reg.email}}
                         </div>
                         <div class="input-group">
-                            <i class='bx bxs-phone'></i>
-                            <input type="number" placeholder="Phone Number">
-                        </div>
-                        <div class="input-group">
-                            <i class='bx bxs-box'></i>
-                            <!-- <label>Choice:
-                                <select name="devices">
+                            <form>
+                                <i class='bx bxs-box'>
+                                    
+                                </i>
+                                <select class="form-select form-select-lg">
                                     <option value="food">Foods</option>
                                     <option value="accessories">Phones / Accessories</option>
                                     <option value="hostel">Hostel</option>
@@ -54,15 +56,17 @@
                                     <option value="wears">Wear's / Collection</option>
                                     <option value="select" selected>Select</option>
                                 </select>
-                            </label> -->
+                            </form>
+                            
+                            
                         </div>
                         <div class="input-group">
                             <i class='bx bxs-lock-alt'></i>
-                            <input type="password" placeholder="Password">
+                            {{reg.password1}}
                         </div>
                         <div class="input-group">
                             <i class='bx bxs-lock-alt'></i>
-                            <input type="password" placeholder="Confirm password">
+                            {{reg.password2}}
                         </div>
                         <button>
                             Sign up
@@ -105,7 +109,7 @@
                         {% csrf_token %}
                         <p>
                             <b>
-                                Forgot password?
+                                <a href="{% url 'backend:password_reset_request' %}">Forgot password?</a>
                             </b>
                         </p>
                         <p>
@@ -132,8 +136,14 @@
             <div class="col align-items-center flex-col">
                 <div class="text sign-in">
                     <h2>
+                        <a href="{% url 'index' %}" class="app-brand-link">
+                            <img src="{% static 'frontend/assets/img/allinone2.png' %}" data-retina="true" alt="" width="50" height="36"></a>
+                            </a>
+                    </h2>
+                    <h2>
                         Welcome
                     </h2>
+                    
     
                 </div>
                 <div class="img sign-in">
@@ -148,8 +158,14 @@
                 </div>
                 <div class="text sign-up">
                     <h2>
+                        <a href="{% url 'index' %}" class="app-brand-link">
+                        <img src="{% static 'frontend/assets/img/allinone2.png' %}" data-retina="true" alt="" width="50" height="36"></a>
+                        </a>
+                    </h2>
+                    <h2>
                         Register here
                     </h2>
+                    
     
                 </div>
             </div>
@@ -158,8 +174,7 @@
         <!-- END CONTENT SECTION -->
     </div>
 
-    
-  <script src="{% static 'frontend/assets/js/signup.js' %}"></script>
+    <script src="{% static 'frontend/assets/js/signup.js' %}"></script>
 </body>
 </html>
     
