@@ -31,6 +31,19 @@ from django.utils.http import urlsafe_base64_encode
  #  end
 
 def login_view(request):
+    if request.method == 'POST':
+        user_name = request.POST.get('user_name')
+        password = request.POST.get('password')
+        user = authenticate(request, username=user_name, password=password)  
+
+        if user is not None:
+            login(request, user)
+            return render(request, 'backend/index.html')
+        else:
+            messages.error(request, 'Username and Password do not match')    
+    return render(request, 'frontend/login.html')
+
+def register(request):
     if request.method  == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -44,18 +57,8 @@ def login_view(request):
             user.save()
             messages.success(request, 'User Registered')
     else:
-        form = RegisterForm()
-    if request.method == 'POST':
-        user_name = request.POST.get('user_name')
-        password = request.POST.get('password')
-        user = authenticate(request, username=user_name, password=password)  
-
-        if user is not None:
-            login(request, user)
-            return render(request, 'backend/index.html')
-        else:
-            messages.error(request, 'Username and Password do not match')    
-    return render(request, 'frontend/signup.html', {'reg':form})
+        form = RegisterForm()    
+    return render(request, 'frontend/reg.html', {'reg':form})
 
 @login_required(login_url='/backend/login/')
 def logout_view(request):
