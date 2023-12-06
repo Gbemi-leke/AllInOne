@@ -19,7 +19,7 @@ class CustomAccountManager(BaseUserManager):
         if other_fields.get('is_superuser') is not True:
             raise ValueError(
                 'Superuser must be assigned to is_superuser=True.')
-        return self.create_user( email, user_name, first_name,  password, **other_fields)
+        return self.create_user( email, user_name, first_name, password, **other_fields)
 
     def create_user(self, email, user_name, first_name,password, **other_fields):
 
@@ -34,6 +34,12 @@ class CustomAccountManager(BaseUserManager):
 
 
 class NewUser(AbstractBaseUser, PermissionsMixin):
+    ACCOUNT_TYPE_CHOICES = (
+            ('admin', 'Admin'),
+            ('vendor', 'Vendor'),
+            ('user', 'User')
+        )
+    
     image = models.ImageField(blank=True, verbose_name='User Image', null=True, upload_to='uploads', default='')
     email = models.EmailField(_('email address'), unique=True)
     user_name = models.CharField(max_length=150, unique=True)
@@ -42,8 +48,9 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     start_date = models.DateTimeField(default=timezone.now)
     phone_number = models.CharField(max_length=100, blank=True)
     about = models.TextField(_('about'), max_length=500, blank=True)
+    account_type = models.CharField(max_length=20, choices=ACCOUNT_TYPE_CHOICES)
+    is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
 
     objects = CustomAccountManager()
 

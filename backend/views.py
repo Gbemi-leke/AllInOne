@@ -34,14 +34,25 @@ def login_view(request):
     if request.method == 'POST':
         user_name = request.POST.get('user_name')
         password = request.POST.get('password')
+
+        # Authenticate the user
         user = authenticate(request, username=user_name, password=password)  
 
+        # If the user is authenticated, log them in and redirect to the homepage
         if user is not None:
             login(request, user)
+            if user.account_type == 'admin':
+                return redirect('backend/user_profile.html')
+            elif user.account_type == 'vendor':
+                return redirect('backend/user_profile.html')
+            elif user.account_type == 'user':
+                return redirect('backend/user_profile.html')
             return render(request, 'backend/index.html')
         else:
-            messages.error(request, 'Username and Password do not match')    
+            messages.error(request, 'Invalid username or password')  
     return render(request, 'frontend/login.html')
+
+
 
 def register(request):
     if request.method  == 'POST':
@@ -49,15 +60,12 @@ def register(request):
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()
-            user.profile.user_name = form.cleaned_data.get('user_name')
-            user.profile.first_name = form.cleaned_data.get('first_name')
-            user.profile.email = form.cleaned_data.get('email')
-            # user can't login until link confirmed
-            user.is_active = False
-            user.save()
-            messages.success(request, 'User Registered')
+            user.user_name = form.cleaned_data.get('user_name')
+            user.first_name = form.cleaned_data.get('first_name')
+            user.email = form.cleaned_data.get('email')
+            messages.success(request, 'User Registered, you can can  proceed to Log in page')
     else:
-        form = RegisterForm()    
+        form = RegisterForm()
     return render(request, 'frontend/reg.html', {'reg':form})
 
 @login_required(login_url='/backend/login/')
@@ -67,7 +75,7 @@ def logout_view(request):
 
 @login_required(login_url='/backend/login/')
 def dashboard(request):
-    list_all_blog = Blog.objects.order_by('-blog_date')[:4]
+    list_all_blog = Blog.objects.filter(user=request.user)[:4]
     return render(request, 'backend/index.html', {'list_blog':list_all_blog})
 
 @login_required(login_url='/backend/login/')

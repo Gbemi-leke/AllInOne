@@ -6,14 +6,15 @@
     AllInOne.com
 {% endblock%}
 
+
 {% block content %}
   <main id="main" data-aos="fade-in">
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
       <div class="container">
-        <h2>Wear's/Collection</h2>
-        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+        <h2>Fashion</h2>
+        <p>We're proud to offer vendors the best possible experience on our website. With a wide range of products and services, an easy-to-use interface, advanced security features, and excellent customer support, we're the number one choice for vendors.</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -23,83 +24,46 @@
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="{% static 'frontend/assets/img/shoe.jpg' %}" class="img-fluid" alt="..." style="width:388px; height: 388px;">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>SHOE</h4>
-                  <p class="price">$30</p>
-                </div>
+          {% if wears %}
+                {% for w in wears %}
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                  <div class="course-item">
+                
+                    <div class="course-content block2">
+                      <div class="block2-pic hov-img0">
+                        <img src="{{ w.img1.url }}" class="img-fluid" alt="..." style="width: 350px; height: 302px; ">
+                        <a href="{% url 'frontend:wears_details' w.id %}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 " >
+                          More Details
+                        </a>
+                      </div>
+                      
+                      <div class="d-flex justify-content-between align-items-center mb-3 block2-txt flex-w flex-t p-t-14 " style="padding: 15px;">
+                        <h4 >Brand:{{ w.vendor_brand}}</h4>
+                        
+                      </div>
+                      <h3><a href="{% url 'frontend:wears_details' w.id %}">{{ w.product_detail|truncatewords:10 }}</a></h3>
+                      <p class="price">&#8358;{{ w.price }}</p>
+                      
+                      <!-- <p>{{ r.description|truncatewords:30 }}.....</p> -->
+                      <div class="trainer d-flex justify-content-between align-items-center">
+                        <!-- <div class="trainer-profile d-flex align-items-center">
+                          <img src="{{ user.image_url }}" class="img-fluid" alt="">
+                          <span>{{ user.user_name }}</span>
+                        </div> -->
+                        <div class="trainer-rank d-flex align-items-center">
+                          <h3 style="color: #1965d8 !important;">AllInOne</h3>
+                        </div>
+                      </div>
+                    </div>
+                
+                  </div>
+                </div>  <!-- End Course Item-->
 
-                <h3><a href="#">Sneakers</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="{% static 'frontend/assets/img/trainers/trainer-1.jpg' %}" class="img-fluid" alt="">
-                    <span>Antonio</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
+                  
+                {% endfor %}
+              {% endif %} <!-- End Course Item-->
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="course-item">
-              <img src="{% static 'frontend/assets/img/necklace.jpg' %}" class="img-fluid" alt="..." style="width:388px; height: 388px;">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Marketing</h4>
-                  <p class="price">$250</p>
-                </div>
-
-                <h3><a href="#">Search Engine Optimization</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="{% static 'frontend/assets/img/trainers/trainer-2.jpg' %}" class="img-fluid" alt="">
-                    <span>Lana</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;35
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;42
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="course-item">
-              <img src="{% static 'frontend/assets/img/top.jpg' %}" class="img-fluid" alt="..." style="width:388px; height: 388px;">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Content</h4>
-                  <p class="price">$180</p>
-                </div>
-
-                <h3><a href="#">Copywriting</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="{% static 'frontend/assets/img/trainers/trainer-3.jpg' %}" class="img-fluid" alt="">
-                    <span>Brandon</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;20
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;85
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
+          
 
         </div>
 
@@ -107,6 +71,7 @@
     </section><!-- End Courses Section -->
 
   </main><!-- End #main -->
+  
 
   <!-- ======= Footer ======= -->
  {% endblock %}

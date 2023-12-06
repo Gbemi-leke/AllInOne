@@ -48,15 +48,15 @@ class EditUserForm(forms.ModelForm):
 
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': 'First name'}))
+        attrs={ 'placeholder': 'First name'}))
     user_name = forms.CharField(label='Username', widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': 'Username'}))
+        attrs={ 'placeholder': 'Username'}))
     email = forms.EmailField(label='Email', widget=forms.EmailInput
-        (attrs={'class': 'form-control', 'placeholder': 'Email'}))
+        (attrs={ 'placeholder': 'Email'}))
     password1 = forms.CharField(label='Enter Password', widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'placeholder': 'Password'}))
+        attrs={ 'placeholder': 'Password'}))
     password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(
-        attrs={'class':'form-control', 'placeholder': 'Confirm password'}))
+        attrs={ 'placeholder': 'Confirm password'}))
 
         
     def clean_email(self):
