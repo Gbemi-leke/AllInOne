@@ -30,24 +30,15 @@
                 
                 <div class="course-content">
                   <img src="{{ r.img.url }}" class="img-fluid" alt="..." style="width: 350px; height: 222px; ">
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                    <!-- <h4>{{ r.brand }}</h4> -->
-                    <p class="price">&#8358;{{ r.price }}</p>
+                    
                   </div>
-
-                  <h3><a href="#">{{ r.title }}</a></h3>
-                  <!-- <p>{{ r.description|truncatewords:30 }}.....</p> -->
-                  <!-- <div class="trainer d-flex justify-content-between align-items-center">
-                    <div class="trainer-profile d-flex align-items-center">
-                      <img src="{{ user.image_url }}" class="img-fluid" alt="">
-                      <span>{{ user.user_name }}</span>
-                    </div>
-                    <div class="trainer-rank d-flex align-items-center">
-                      <i class="bx bx-user"></i>&nbsp;50
-                      &nbsp;&nbsp;
-                      <i class="bx bx-heart"></i>&nbsp;65
-                    </div>
-                  </div> -->
+                  <h5><a href="#" class="ml-5 mr-4 ">{{ r.title }}</a></h5> 
+                  <p class="price" style="text-align: center;">&#8358;{{ r.price }}</p>
+                  <div class="trainer-rank d-flex" >
+                    <button type="submit" class="ml-5 mr-4 mb-2 col-8 mt-4 btn btn-success me-2" style="text-align: center !important;"><a href="#" style="color:#fff;">Place Order</a></button>
+                    
+                  </div>
+                  
                 </div>
               </div>
             </div> <!-- End Course Item-->

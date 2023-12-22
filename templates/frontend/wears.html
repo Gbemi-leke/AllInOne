@@ -37,27 +37,27 @@
                         </a>
                       </div>
                       
-                      <div class="d-flex justify-content-between align-items-center mb-3 block2-txt flex-w flex-t p-t-14 " style="padding: 15px;">
+                      <div class="d-flex justify-content-between align-items-center mb-3 block2-txt flex-w flex-t p-t-14 " style="padding: 15px; text-align: center;">
                         <h4 >Brand:{{ w.vendor_brand}}</h4>
                         
                       </div>
-                      <h3><a href="{% url 'frontend:wears_details' w.id %}">{{ w.product_detail|truncatewords:10 }}</a></h3>
-                      <p class="price">&#8358;{{ w.price }}</p>
+                      <div style="text-align: center;">
+                        <h3><a href="{% url 'frontend:wears_details' w.id %}">{{ w.product_detail }}</a></h3>
+                        <p class="price">&#8358;{{ w.price }}</p>
+                      </div>
+                      
                       
                       <!-- <p>{{ r.description|truncatewords:30 }}.....</p> -->
                       <div class="trainer d-flex justify-content-between align-items-center">
-                        <!-- <div class="trainer-profile d-flex align-items-center">
-                          <img src="{{ user.image_url }}" class="img-fluid" alt="">
-                          <span>{{ user.user_name }}</span>
-                        </div> -->
+                      
                         <div class="trainer-rank d-flex align-items-center">
-                          <h3 style="color: #1965d8 !important;">AllInOne</h3>
+                          <h6 style="color: #1965d8 !important;">ShopCityMall</h6>
                         </div>
                       </div>
                     </div>
                 
                   </div>
-                </div>  <!-- End Course Item-->
+                </div> <!-- End Course Item-->
 
                   
                 {% endfor %}

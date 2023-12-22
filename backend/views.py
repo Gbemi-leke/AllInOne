@@ -41,12 +41,12 @@ def login_view(request):
         # If the user is authenticated, log them in and redirect to the homepage
         if user is not None:
             login(request, user)
-            if user.account_type == 'admin':
-                return redirect('backend/user_profile.html')
-            elif user.account_type == 'vendor':
-                return redirect('backend/user_profile.html')
-            elif user.account_type == 'user':
-                return redirect('backend/user_profile.html')
+            # if user.account_type == 'admin':
+            #     return redirect('backend/user_profile.html')
+            # elif user.account_type == 'vendor':
+            #     return redirect('backend/user_profile.html')
+            # elif user.account_type == 'user':
+            #     return redirect('backend/user_profile.html')
             return render(request, 'backend/index.html')
         else:
             messages.error(request, 'Invalid username or password')  
@@ -63,6 +63,7 @@ def register(request):
             user.user_name = form.cleaned_data.get('user_name')
             user.first_name = form.cleaned_data.get('first_name')
             user.email = form.cleaned_data.get('email')
+            user.account_type = form.cleaned_data.get('account_type')
             messages.success(request, 'User Registered, you can can  proceed to Log in page')
     else:
         form = RegisterForm()
@@ -138,12 +139,120 @@ def password_reset_request(request):
             subscribe_form = subscribe_form.save(commit=False)
             subscribe_form.user = request.user
             subscribe_form.save()
-            messages.success(request, 'Add successfully.')
+            messages.success(request, 'Upload successfully.')
             return redirect('frontend:password_reset_request')
     else:
         subscribe_form = SubscribeForm()
     return render(request=request, template_name="backend/password_reset.html",
                   context={"password_reset_form": password_reset_form,'subscribe_form':subscribe_form})
+
+@login_required(login_url='/backend/login/')
+def food(request):
+    restaurant = Restaurant.objects.order_by('-date')
+    return render(request, 'backend/food.html', {'restaurant':restaurant})
+
+@login_required(login_url='/backend/login/')
+def pastries(request):
+    pastries = Pastries.objects.order_by('-date')
+    return render(request, 'backend/pastries.html', {'pastries':pastries})
+
+@login_required(login_url='/backend/login/')
+def edit_pastries(request, pastries_id):
+    pastries_post = get_object_or_404(Pastries, id=pastries_id)
+    if request.method == 'POST':
+        editpastries_form = EditPastriesForm(request.POST, request.FILES,instance=pastries_post)
+        if editpastries_form.is_valid():
+            editpastries_form = editpastries_form.save(commit=False)
+            editpastries_form.user = request.user
+            editpastries_form.save()
+            messages.success(request, 'Successfully Edited.')
+            editpastries_form = EditPastriesForm(instance=pastries_post)
+            
+    else:
+        editpastries_form = EditPastriesForm(instance=pastries_post)
+    return render(request, 'backend/edit_cakes.html', {'editpastries_form': editpastries_form})
+
+@login_required(login_url='/backend/login/')
+def delete_pastries(request, deletepastries_id):
+    pastries_record = get_object_or_404(Pastries, id=deletepastries_id)
+    pastries_record.delete()
+    return redirect('backend:dashboard')
+
+@login_required(login_url='/backend/login/')
+def gadgets(request):
+    gadgets = Gadgets.objects.order_by('-date')
+    return render(request, 'backend/gadgets.html', {'gadgets':gadgets})
+
+@login_required(login_url='/backend/login/')
+def edit_gadgets(request, gadgets_id):
+    gadgets_post = get_object_or_404(Gadgets, id=gadgets_id)
+    if request.method == 'POST':
+        editgadgets_form = EditGadgetsForm(request.POST, request.FILES,instance=gadgets_post)
+        if editgadgets_form.is_valid():
+            editgadgets_form = editgadgets_form.save(commit=False)
+            editgadgets_form.user = request.user
+            editgadgets_form.save()
+            messages.success(request, 'Successfully Edited.')
+            editgadgets_form = EditGadgetsForm(instance=gadgets_post)
+            
+    else:
+        editgadgets_form = EditGadgetsForm(instance=gadgets_post)
+    return render(request, 'backend/edit_phone.html', {'editgadgets_form': editgadgets_form})
+
+@login_required(login_url='/backend/login/')
+def delete_gadgets(request, deletegadgets_id):
+    gadgets_record = get_object_or_404(Gadgets, id=deletegadgets_id)
+    gadgets_record.delete()
+    return redirect('backend:dashboard')
+
+
+@login_required(login_url='/backend/login/')
+def wears(request):
+    wears = Fashion.objects.order_by('-date')
+    return render(request, 'backend/wears.html', {'wears':wears})
+
+@login_required(login_url='/backend/login/')
+def add_gadgets(request):
+    if request.method == 'POST':
+        gadgets_form = GadgetsForm(request.POST, request.FILES)
+        if gadgets_form.is_valid():
+            gadgets_form = gadgets_form.save(commit=False)
+            gadgets_form.user = request.user
+            gadgets_form.save()
+            messages.success(request, 'Upload successfully.')
+            return redirect('backend:add_gadgets')
+    else:
+        gadgets_form = GadgetsForm()
+    return render(request, 'backend/add_phone.html', {'gadgets_form': gadgets_form})
+
+
+@login_required(login_url='/backend/login/')
+def add_pastries(request):
+    if request.method == 'POST':
+        pastries_form = PastriesForm(request.POST, request.FILES)
+        if pastries_form.is_valid():
+            pastries_form = pastries_form.save(commit=False)
+            pastries_form.user = request.user
+            pastries_form.save()
+            messages.success(request, 'Upload successfully.')
+            return redirect('backend:add_pastries')
+    else:
+        pastries_form = PastriesForm()
+    return render(request, 'backend/add_cakes.html', {'pastries_form': pastries_form})
+
+@login_required(login_url='/backend/login/')
+def add_wears(request):
+    if request.method == 'POST':
+        wears_form = FashionForm(request.POST, request.FILES)
+        if wears_form.is_valid():
+            wears_form = wears_form.save(commit=False)
+            wears_form.user = request.user
+            wears_form.save()
+            messages.success(request, 'Upload successfully.')
+            return redirect('backend:add_wears')
+    else:
+        wears_form = FashionForm()
+    return render(request, 'backend/add_wears.html', {'wears_form': wears_form})
 
 @login_required(login_url='/backend/login/')
 def add_blog(request):
@@ -153,7 +262,7 @@ def add_blog(request):
             blog_form = blog_form.save(commit=False)
             blog_form.user = request.user
             blog_form.save()
-            messages.success(request, 'Add successfully.')
+            messages.success(request, 'Upload successfully.')
             return redirect('backend:add_blog')
     else:
         blog_form = BlogForm()
@@ -174,6 +283,28 @@ def edit_blog(request, post_id):
     else:
         editblog_form = EditBlogForm(instance=blog_post)
     return render(request, 'backend/edit_blog.html', {'editblog_form': editblog_form})
+
+@login_required(login_url='/backend/login/')
+def edit_wears(request, wears_id):
+    wears_post = get_object_or_404(Fashion, id=wears_id)
+    if request.method == 'POST':
+        editwears_form = EditWearsForm(request.POST, request.FILES,instance=wears_post)
+        if editwears_form.is_valid():
+            editwears_form = editwears_form.save(commit=False)
+            editwears_form.user = request.user
+            editwears_form.save()
+            messages.success(request, 'Successfully Edited.')
+            editwears_form = EditWearsForm(instance=wears_post)
+            
+    else:
+        editwears_form = EditWearsForm(instance=wears_post)
+    return render(request, 'backend/edit_wears.html', {'editwears_form': editwears_form})
+
+@login_required(login_url='/backend/login/')
+def delete_wears(request, deletewears_id):
+    wears_record = get_object_or_404(Fashion, id=deletewears_id)
+    wears_record.delete()
+    return redirect('backend:dashboard')
 
 @login_required(login_url='/backend/login/')
 def view_blog(request, view_id):

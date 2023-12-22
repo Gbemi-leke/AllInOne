@@ -47,6 +47,17 @@ class EditUserForm(forms.ModelForm):
         
 
 class RegisterForm(UserCreationForm):
+    IS_VENDOR = "V"
+    IS_USER = "U"
+    CHOOSE = ""
+
+    ACCOUNT_TYPE = [
+        (IS_VENDOR, 'Vendor'),
+        (IS_USER, 'User'),
+        (CHOOSE, 'Type of account')
+
+    ]
+
     first_name = forms.CharField(required=False, widget=forms.TextInput(
         attrs={ 'placeholder': 'First name'}))
     user_name = forms.CharField(label='Username', widget=forms.TextInput(
@@ -57,6 +68,9 @@ class RegisterForm(UserCreationForm):
         attrs={ 'placeholder': 'Password'}))
     password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(
         attrs={ 'placeholder': 'Confirm password'}))
+    
+    account_type = forms.CharField(required=False, label='Type of account:', widget=forms.Select(choices=ACCOUNT_TYPE,
+        attrs={'class': 'form-control', 'placeholder': 'Type of account'}))
 
         
     def clean_email(self):
@@ -67,13 +81,14 @@ class RegisterForm(UserCreationForm):
 
     class Meta():
         model = NewUser
-        fields = [ 'first_name','user_name', 'password1', 'password2']
+        fields = [ 'first_name','user_name', 'password1', 'password2','is_admin','account_type']
 
     def save(self, commit=True):
         user = super().save(commit=False)
         user.first_name = self.cleaned_data['first_name']
         user.user_name = self.cleaned_data['user_name']
         user.email = self.cleaned_data['email']
+        user.account_type = self.cleaned_data['account_type']
 
         if commit:
             user.save()

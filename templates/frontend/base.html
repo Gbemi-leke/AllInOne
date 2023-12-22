@@ -15,7 +15,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static 'frontend/assets/img/allinone2.png' %}" rel="icon">
+  <link href="{% static 'frontend/assets/img/shopcityfav.png' %}" rel="icon">
   <link href="{% static 'frontend/assets/img/allinone1.jfif' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -58,7 +58,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="{% url 'index' %}">AllinOne</a></h1>
+      <h1 class="logo me-auto"><a href="{% url 'index' %}" style="font-family: fantasy;">ShopCityMall</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="{% url 'index' %}" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -87,9 +87,12 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a href="{% url 'backend:dashboard' %}" class="get-started-btn">Dashboard</a>
+      
       <div>
-        <img class="img-profile rounded-circle" src="{{ user.image_url}}" style="width: 55px; height: 55px; padding: 10px;">
+        <a href="{% url 'backend:dashboard' %}">
+          &nbsp; &nbsp; <img class="img-profile rounded-circle" src="{{ user.image_url}}" style="width: 55px; height: 55px; padding: 10px;">
+        </a>
+        
       </div>
       
 
@@ -100,7 +103,7 @@
     <header id="header" class="fixed-top">
       <div class="container d-flex align-items-center">
   
-        <h1 class="logo me-auto"><a href="{% url 'index' %}">AllinOne</a></h1>
+        <h1 class="logo me-auto"><a href="{% url 'index' %}">ShopCityMall</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="{% url 'index' %}" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
   
@@ -147,13 +150,13 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>AllInOne</h3>
+            <h3>ShopCityMall</h3>
             <p>
               Hawawu Ajike Hostel Westend <br>
               Malete, Kwara State.<br>
               Nigeria <br><br>
               <strong>Phone:</strong> +234 7084 448 398<br>
-              <strong>Email:</strong> allinone@gmail.com<br>
+              <strong>Email:</strong> shopcitymall@gmail.com<br>
             </p>
           </div>
 
@@ -197,7 +200,7 @@
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>AllInOne</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>ShopCityMall&nbsp;❤️</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
           Designed by <a href="https://gbemileke.pythonanywhere.com/" target="_blank">Oluwagbemileke</a>

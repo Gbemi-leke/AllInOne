@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 {% block title %}
-    AllInOne.com
+    shopcitymall.com.ng
 {% endblock%}
 
 {% block content %}
@@ -11,7 +11,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>You Are Welcome,<br>AllInOne inside Malete</h1>
+      <h1><i style="font-family:serif ">You Are Welcome,</i><br><span style="font-family:monospace">ShopCityMall Platform</span></h1>
       <!-- <h2>This is a website thats enables you get all you <br>need within Malete with no stress.</h2> -->
       <a href="#" class="btn-get-started">Get Started</a>
     </div>
@@ -25,10 +25,10 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="{% static 'frontend/assets/img/allinone.png' %}" class="img-fluid" alt="" style="width: 549px; height:412px;">
+            <img src="{% static 'frontend/assets/img/all2.jpg' %}" class="img-fluid" alt="" style="width: 549px; height:412px;">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>AllInOne.</h3>
+            <h3>ShopCityMall.</h3>
             <p class="fst-italic">
              
               We're proud to offer vendors the best possible experience on our website. With a wide range of products and services, an easy-to-use interface, advanced security features, and excellent customer support, we're the number one choice for vendors. Come and join us today!
@@ -91,12 +91,12 @@
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h3>Why Choose AllInOne?</h3>
+              <h3>Why Choose ShopCityMall?</h3>
               <p>
                 Wide range of products and services<br>
                 - Easy-to-use interface<br>
                 - Advanced security features<br>
-                - Excellent customer support<br>
+                - Excellent customer support<br><br>
                 We're proud to offer vendors the best possible experience on our website. With a wide range of products and services, an easy-to-use interface, advanced security features, and excellent customer support, we're the number one choice for vendors. Come and join us today!
                 
               <div class="text-center">
@@ -113,11 +113,11 @@
                   <div class="member">
                     <img src="{% static 'frontend/assets/img/profile1.png' %}" class="img-fluid" alt="" style="height:225px;">
                     <div class="member-content">
-                      <h4>Odekunle Joseph</h4>
+                      <h4>ODEKUNLE JOSEPH</h4>
                       <span>Web Developer</span>
                       <p>
                         I'm a web developer with in-depth experience in UI/UX design. In a nutshell, 
-                        I create websites that help organizations address business challenges and meet their needs.
+                        I create websites that help organizations, address business challenges and meet their needs.
                       </p>
                       <div class="social">
                         <a href="https://twitter.com/Oluwagbemi02"><i class="bi bi-twitter"></i></a>
@@ -133,7 +133,7 @@
                   <div class="member">
                     <img src="{% static 'frontend/assets/img/solo.png' %}" class="img-fluid" alt="" style="height:225px;">
                     <div class="member-content">
-                      <h4>Mr. Solomon</h4>
+                      <h4>ODUNBANJO SOLOMON</h4>
                       <span>Designer</span>
                       <p>
                         Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
@@ -152,7 +152,7 @@
                   <div class="member">
                     <img src="{% static 'frontend/assets/img/christech.jpg' %}" class="img-fluid" alt="" style="height:225px;">
                     <div class="member-content">
-                      <h4>Adebisi Victor</h4>
+                      <h4>ADEBISI VICTOR</h4>
                       <span>App Developer </span>
                       <p>
                         Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
@@ -276,27 +276,16 @@
               <div class="course-item">
                 
                 <div class="course-content">
-                  <a href="#">
-                    <img src="{{ r.img.url }}" class="img-fluid" alt="..." style="width: 350px; height: 222px; ">
-                  </a>
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                    <!-- <h4>{{ r.brand }}</h4> -->
-                    <p class="price" style="padding-top: 10px;">&#8358;{{ r.price }}</p>
+                  <img src="{{ r.img.url }}" class="img-fluid" alt="..." style="width: 350px; height: 222px; ">
+                    
                   </div>
-
-                  <h3><a href="#">{{ r.title }}</a></h3>
-                  <!-- <p>{{ r.description|truncatewords:30 }}.....</p> -->
-                  <!-- <div class="trainer d-flex justify-content-between align-items-center">
-                    <div class="trainer-profile d-flex align-items-center">
-                      <img src="{{ user.image_url }}" class="img-fluid" alt="">
-                      <span>{{ user.user_name }}</span>
-                    </div>
-                    <div class="trainer-rank d-flex align-items-center">
-                      <i class="bx bx-user"></i>&nbsp;50
-                      &nbsp;&nbsp;
-                      <i class="bx bx-heart"></i>&nbsp;65
-                    </div>
-                  </div> -->
+                  <h5><a href="#" class="ml-5 mr-4 ">{{ r.title }}</a></h5> 
+                  <p class="price" style="text-align: center;">&#8358;{{ r.price }}</p>
+                  <div class="trainer-rank d-flex" >
+                    <button type="submit" class="ml-5 mr-4 mb-2 col-8 mt-4 btn btn-success me-2" style="text-align: center !important;"><a href="#" style="color:#fff;">Place Order</a></button>
+                    
+                  </div>
+                  
                 </div>
               </div>
             </div> <!-- End Course Item-->
@@ -330,21 +319,21 @@
                         </a>
                       </div>
                       
-                      <div class="d-flex justify-content-between align-items-center mb-3 block2-txt flex-w flex-t p-t-14 " style="padding: 15px;">
+                      <div class="d-flex justify-content-between align-items-center mb-3 block2-txt flex-w flex-t p-t-14 " style="padding: 15px; text-align: center;">
                         <h4 >Brand:{{ w.vendor_brand}}</h4>
                         
                       </div>
-                      <h3><a href="{% url 'frontend:wears_details' w.id %}">{{ w.product_detail }}</a></h3>
-                      <p class="price">&#8358;{{ w.price }}</p>
+                      <div style="text-align: center;">
+                        <h3><a href="{% url 'frontend:wears_details' w.id %}">{{ w.product_detail }}</a></h3>
+                        <p class="price">&#8358;{{ w.price }}</p>
+                      </div>
+                      
                       
                       <!-- <p>{{ r.description|truncatewords:30 }}.....</p> -->
                       <div class="trainer d-flex justify-content-between align-items-center">
-                        <!-- <div class="trainer-profile d-flex align-items-center">
-                          <img src="{{ user.image_url }}" class="img-fluid" alt="">
-                          <span>{{ user.user_name }}</span>
-                        </div> -->
+                      
                         <div class="trainer-rank d-flex align-items-center">
-                          <h3 style="color: #1965d8 !important;">AllInOne</h3>
+                          <h6 style="color: #1965d8 !important;">ShopCityMall</h6>
                         </div>
                       </div>
                     </div>
