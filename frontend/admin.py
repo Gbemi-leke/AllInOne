@@ -9,4 +9,4 @@ admin.site.register(Fashion)
 admin.site.register(Pastries)
 admin.site.register(Gadgets)
 admin.site.register(Contact)
-admin.site.site_header = 'Allinone'
+admin.site.site_header = 'ShopCityMall'

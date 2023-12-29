@@ -75,7 +75,7 @@
               <p class="pt-3">
                 COLOUR: {{ det.colour}}
               </p>
-              <button type="submit" class="col-4 col-lg-3 mt-4 btn btn-success me-2 col-md-3 col-lg-2"><a href="#" style="color:#fff; border-radius:15px;">Make Payment</a></button>
+              <button type="submit" class="col-4 col-lg-3 mt-4 btn btn-success me-2 col-md-3 col-lg-2"><a href="{% url 'payments:initiate_payment'%}" style="color:#fff; border-radius:15px;">Make Payment</a></button>
             </div><hr>
             
             <button type="submit" class="col-3 col-lg-2 mt-4 btn btn-primary me-2 col-md-3 col-lg-2"><a href="{% url 'frontend:phones'%}" style="color:#fff;">Back</a></button>

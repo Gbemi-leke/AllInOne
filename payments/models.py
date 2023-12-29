@@ -10,7 +10,7 @@ class UserWallet(models.Model):
     currency = models.CharField(max_length=50, default='NGN')
     created_at = models.DateTimeField(default=timezone.now, null=True)
 
-    def __str__(self):
+    def __str__(self): 
         return self.user.__str__()
     
 class Payment(models.Model):
@@ -27,7 +27,7 @@ class Payment(models.Model):
     def __str__(self):
         return f"Payment: {self.amount}"
     
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs) -> None:
         while not self.ref:
             ref = secrets.token_urlsafe(50)
             object_with_similar_ref = Payment.objects.filter(ref=ref)

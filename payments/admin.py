@@ -7,4 +7,4 @@ class PaymentAdmin(admin.ModelAdmin):
 
 admin.site.register(UserWallet)
 admin.site.register(Payment, PaymentAdmin)
-admin.site.site_header = 'Allinone'
+admin.site.site_header = 'ShopCityMall'

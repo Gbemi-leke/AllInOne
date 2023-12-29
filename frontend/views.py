@@ -206,3 +206,5 @@ def hostel(request):
     return render(request, 'frontend/hostel.html', {'subscribe_form':subscribe_form})
 
 
+def payment(request):
+    return render(request, 'frontend/payment.html')
