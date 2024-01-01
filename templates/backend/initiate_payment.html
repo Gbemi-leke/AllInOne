@@ -7,20 +7,22 @@ shopcitymall
 
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="container">
-    <div class="d-flex row justify-content-center align-items-center py-md-5 py-3" style="min-height:90vh;">
-        <div class="col-12">
-            <form action="." method="post">
-                <h4>Enter amount</h4>
-                <hr>
-                {% csrf_token %}
-                {{ payment_form |crispy}}
-                <p>
-                    <input class="btn btn-primary mt-3" type="submit" value="submit">
-                </p>
-            </form>
+<section id="pricing" class="pricing">
+    <div class="container" data-aos="fade-up">
+        <div class="d-flex row justify-content-center align-items-center py-md-5 py-3" style="min-height:90vh;">
+            <div class="col-lg-6 col-md-6">
+                <form action="." method="post" class="box">
+                    <h4>Enter amount</h4>
+                    <hr>
+                    {% csrf_token %}
+                    {{ payment_form |crispy}}
+                    <p class="btn-wrap" >
+                        <input class="btn btn-primary mt-3" type="submit" value="submit">
+                    </p>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</section>    
 
 {% endblock %}
